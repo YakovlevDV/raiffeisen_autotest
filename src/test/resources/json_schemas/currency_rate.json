@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "success": { "type": "boolean" },
+    "data": {
+      "type": "object",
+      "properties": {
+        "rates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "code": { "type": "string" },
+              "title": {
+                "type": "object",
+                "properties": {
+                  "english": { "type": "string" },
+                  "russian": { "type": "string" }
+                },
+                "required": ["english", "russian"]
+              },
+              "updatedAt": { "type": "integer" },
+              "exchange": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "code": { "type": "string" },
+                    "title": {
+                      "type": "object",
+                      "properties": {
+                        "english": { "type": "string" },
+                        "russian": { "type": "string" }
+                      },
+                      "required": ["english", "russian"]
+                    },
+                    "rates": {
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "sell": {
+                              "type": "object",
+                              "properties": {
+                                "value": { "type": "number" },
+                                "direction": { "type": "integer" },
+                                "multiplier": { "type": "integer" }
+                              },
+                              "required": ["value", "direction", "multiplier"],
+                              "additionalProperties": false
+                            },
+                            "buy": {
+                              "type": "object",
+                              "properties": {
+                                "value": { "type": "number" },
+                                "direction": { "type": "integer" },
+                                "multiplier": { "type": "integer" }
+                              },
+                              "required": ["value", "direction", "multiplier"],
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": ["sell", "buy"],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "last": {
+                              "type": "object",
+                              "properties": {
+                                "value": { "type": "number" },
+                                "direction": { "type": "integer" },
+                                "multiplier": { "type": "integer" }
+                              },
+                              "required": ["value", "direction", "multiplier"],
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": ["last"],
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  },
+                  "required": ["code", "title", "rates"],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": ["code", "title", "updatedAt", "exchange"],
+            "additionalProperties": false
+          }
+        },
+        "updatedAtRus": { "type": "string" },
+        "updatedAtEng": { "type": "string" }
+      },
+      "required": ["rates", "updatedAtRus", "updatedAtEng"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["success", "data"],
+  "additionalProperties": false
+}
