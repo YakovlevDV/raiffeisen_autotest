@@ -6,4 +6,9 @@
             <class name="tests.CurrencyTest"/>
         </classes>
     </test>
+    <test name="Меню">
+        <classes>
+            <class name="tests.MenuTest"/>
+        </classes>
+    </test>
 </suite>

@@ -11,7 +11,7 @@ public class CurrencyAPI {
     public static ValidatableResponse perform(String source, String currencies) {
         return given()
                 .when()
-                .log().all()
+                    .log().all()
                     .queryParam("source", source)
                     .queryParam("currencies", currencies)
                     .get(URL)
