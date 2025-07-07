@@ -3,7 +3,12 @@
 <suite name="API tests for Raiffeisen backend">
     <test name="Курсы валют">
         <classes>
-            <class name="tests.CurrencyTest"/>
+            <class name="tests.CurrencyTest">
+                <methods>
+                    <include name="currencyPositiveTest"/>
+                    <include name="currencyNegativeTest"/>
+                </methods>
+            </class>
         </classes>
     </test>
     <test name="Меню">
